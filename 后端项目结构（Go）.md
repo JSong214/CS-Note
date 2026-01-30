@@ -18,7 +18,7 @@
 │   │   ├── user_handler.go         # 解析请求参数，调用 Service，返回响应
 │   │   └── order_handler.go
 │   │
-│   ├── router/                     # 【路由层】(采用方案一：集中式管理)
+│   ├── router/                     # 【路由层】(集中式管理)
 │   │   ├── middleware/             # 存放项目级中间件
 │   │   │   ├── auth.go             # JWT/Session 鉴权
 │   │   │   ├── cors.go             # 跨域配置
@@ -30,7 +30,7 @@
 │   │   └── user_service.go         # 具体的业务逻辑实现
 │   │
 │   ├── repository/                 # 【数据层】(DAO/Repository)
-│   │   ├── mysql/                  # MySQL 实现
+│   │   ├── sql/                    # 数据库 实现
 │   │   └── redis/                  # Redis 实现
 │   │
 │   ├── model/                      # 【模型层】
