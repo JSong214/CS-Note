@@ -100,7 +100,7 @@ public class Dog {
 
 ### 编译与解释
 
-![编译器与解释器](图片/编译器与解释器.png)
+![编译器与解释器](https://pic-go-image-1363881366.cos.ap-chengdu.myqcloud.com/Image/%E7%BC%96%E8%AF%91%E5%99%A8%E4%B8%8E%E8%A7%A3%E9%87%8A%E5%99%A8.png)
 
 #### **第一阶段：编译 (Compilation)**
 
