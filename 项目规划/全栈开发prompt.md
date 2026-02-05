@@ -61,10 +61,27 @@
 
 **Prompt:**
 
-> “我们进入后端开发。
+> 我们进入后端开发。
 >
-> 1. **Model 层**：根据刚才的数据库设计，生成对应的 [语言/ORM，如 GORM] Struct 代码。
-> 2. **Controller 层**：基于 OpenAPI YAML，生成处理 HTTP 请求的 Handler 骨架。**只处理参数绑定和响应返回，业务逻辑部分请留空并标记 `// TODO: Implement Core Logic`**。”
+> 1. **Model 层 (Entity)**：
+>    - 根据数据库设计生成 Struct。
+>    - 包含必要的 ORM tags (如 `gorm:"..."`) 和 JSON tags。
+>    - *引用来源： (基于数据库设计生成模型)*
+> 2. **Repository 层 (Data Access)**：
+>
+>    - 定义 `Repository` **接口 (Interface)**。
+>    - 实现基本的 CRUD 操作（如 `Create`, `FindByID`）。
+>    - 这部分代码通常是标准的，你可以直接写出实现。
+> 3. **Service 层 (Business Logic) ——  重点**：
+>    - 定义 `Service` **接口 (Interface)**。该接口的方法签名必须严格对应 OpenAPI 定义的输入输出。
+>    - 生成 `Service` 的**实现结构体 (Struct)**，但 **方法内部必须留空**。
+>    - **约束**：不要尝试编写复杂的业务逻辑（如权限判断、复杂计算）。
+>    - **动作**：在方法体内只写一行 `panic("TODO: Implement business logic here")` 或返回零值。
+> 4. **Handler 层 (Controller)**：
+>    - 定义 HTTP Handler 函数。
+>    - **完整实现**：处理 Request Body 解析 (Binding)、参数校验 (Validation)。
+>    - **完整实现**：调用 `Service` 接口的方法。
+>    - **完整实现**：根据 Service 返回的结果，按照 OpenAPI 定义的格式组装 Response (JSON) 并处理 HTTP 状态码。
 
 #### 2.2 单元测试生成
 
